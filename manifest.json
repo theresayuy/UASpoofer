@@ -1,0 +1,22 @@
+{
+    "name": "UASpoofer",
+    "description": "Spoof the browser user agent string.",
+    "version": "1.0.20220805",
+    "manifest_version": 3,
+    "permissions":["tabs", "activeTab"],
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "/img/favicon/icon16.png",
+            "32": "/img/favicon/icon32.png",
+            "48": "/img/favicon/icon48.png",
+            "128": "/img/favicon/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "/img/favicon/icon16.png",
+        "32": "/img/favicon/icon32.png",
+        "48": "/img/favicon/icon48.png",
+        "128": "/img/favicon/icon128.png"
+    }
+}

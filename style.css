@@ -1,0 +1,75 @@
+body {
+    width: 600px;  
+    font-family: sans-serif;
+    color: white;
+    text-align:center;
+}
+
+p.h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+p {
+   font-size: 16px; 
+}
+
+select {
+    font-size: 14px;
+    font-weight: bold;
+    background-color: black;
+    color: #a8a8b5;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+}
+
+select:active {
+    background-color: #a8a8b5;
+    color: black;    
+}
+
+.blank-space {
+    height: 20px;
+}
+
+#ua-str-p {
+    font-size: 14px;
+}
+
+#choose-product {
+    background-image: linear-gradient(180deg, rgba(168,168,181,1) 25%, rgba(83,83,168,1) 75%);
+    height: 170px;
+}
+
+#ua-changes {
+    background-image: linear-gradient(0deg, rgba(168,168,181,1) 25%, rgba(83,83,168,1) 75%);
+    height: 200px;
+}
+
+.btn-row-1 {
+    background-color: #5353a8;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    border-radius: .25rem;
+    font-weight: bold;
+}
+
+.btn-row-1:hover {
+    background-color: black;
+    color: #5353a8;
+}
+
+.btn-row-2 {
+    background-color: black;
+    color: #a8a8b5;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    border-radius: .25rem;
+    font-weight: bold;
+}
+
+.btn-row-2:hover {
+    background-color: #a8a8b5;
+    color: black;
+}
