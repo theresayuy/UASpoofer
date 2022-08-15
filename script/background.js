@@ -1,3 +1,8 @@
+// returns a new reference of a string or array
+const getDeepCopy = function(toCopy) {
+    return ((toCopy.toString() === toCopy ? " " : [" "]).concat(toCopy)).slice(1);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                      //
 //                                 DEALS WITH PROMISES                                  //
@@ -5,7 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // Stores the result of a successful promise to be modified and accessed later
-class PromiseResult {
+const PromiseResult = class {
     constructor(result) {
         this.result = result;
     }
@@ -17,25 +22,42 @@ class PromiseResult {
     setResult(newResult) {
         this.result = newResult;
     }
-}
+};
 
-const openWindows = new PromiseResult([]); // stores an array with info about open windows
-const storageUAStr = new PromiseResult(""); // used for getting UA string from chrome.storage
+const openWindows = new PromiseResult([]); // stores array with info about open windows
+const storageUAStr = new PromiseResult(""); // stores UA string from chrome.storage
+const platformResult = new PromiseResult(""); // stores navigator.platform
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                      //
-//                              DEALS WITH STRINGS AND ARRAYS                           //
+//                      DEALS WITH STRINGS FROM AND FOR THE BROWSER                     //
 //                                                                                      //
 //////////////////////////////////////////////////////////////////////////////////////////
-
-function getDeepCopy(toCopy, isStr) {
-    return ((isStr ? " " : [" "]).concat(toCopy)).slice(1);
-}
 
 // check if a url starts with "https"
-function isGoodURL(urlStr) {
+const isGoodURL = function(urlStr) {
     return urlStr.slice(0, 5) === "https" || 
             urlStr.slice(0, 5) === "http:";
+}
+
+// updates the result of platformResult
+const updatePlatformResult = function(uaStr) {
+    const PLATFORMS = [
+        {toCheck: "Windows", platform: "Win32"},
+        {toCheck: "Macintosh; Intel", platform: "MacIntel"},
+        {toCheck: "Linux x86_64", platform: "Linux x86_64"},
+        {toCheck: "X11; Linux", platform: "Linux"}, 
+        {toCheck: "Linux; Android", platform: "Linux armv8l"},
+        {toCheck: "iPhone", platform: "iPhone"}, {toCheck: "iPad", platform: "iPad"}
+    ];
+    platformResult.setResult("NO PLATFORM");
+
+    for (let i = 0; i < PLATFORMS.length; i++) {
+        if (uaStr.indexOf(PLATFORMS[i].toCheck) > -1 && 
+            platformResult.getResult() === "NO PLATFORM") {
+                platformResult.setResult(getDeepCopy(PLATFORMS[i].platform));
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -45,18 +67,18 @@ function isGoodURL(urlStr) {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // updates the array of all open windows to store info about newly opened tabs
-function updateOpenWindows() {
+const updateOpenWindows = function() {
     let allWindowsPromise = chrome.windows.getAll({
         populate: true, windowTypes: ["normal"]
     });
     allWindowsPromise.then((result) => {
-        openWindows.setResult(getDeepCopy(result, false));
+        openWindows.setResult(getDeepCopy(result));
     });
 }
 
 // returns information about all tabs
-function getAllTabs() {    
-    let owVal = getDeepCopy(openWindows.getResult(), false);
+const getAllTabs = function() {    
+    let owVal = getDeepCopy(openWindows.getResult());
     let result = [];
 
     // navigate through all the tabs and append them to result
@@ -75,21 +97,18 @@ function getAllTabs() {
 //                                                                                      //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// stores the default UA string in storageUAStr
-const chromeGetDefaultUA = function() {
-    chrome.storage.local.get("defaultUA", (result) => {
-        storageUAStr.setResult(
-            getDeepCopy(result["defaultUA"])
-        );
-    });
-}
-
-
-// stores newUAStr in chrome local storage
+// stores newUAStr in chrome local storage and updates the value of storageUAStr
 const chromeStoreDefaultUA = function(newUAStr) {
     chrome.storage.local.set(
         {defaultUA: getDeepCopy(newUAStr)}
     );
+}
+
+// updates result of storageUAStr
+const updateStorageUAStr = function() {
+    chrome.storage.local.get("defaultUA", (result) => {
+        storageUAStr.setResult(getDeepCopy(result["defaultUA"]));
+    });
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -99,7 +118,7 @@ const chromeStoreDefaultUA = function(newUAStr) {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // attaches debugger and overrides navigator.userAgent for one tab
-function attachDebugger(tabID, newUAStr) {
+const attachDebugger = function(tabID, newUAStr) {
     const PROTOCOL_VER = "1.0";
 
     chrome.debugger.getTargets((result) => {
@@ -128,7 +147,8 @@ function attachDebugger(tabID, newUAStr) {
                             chrome.debugger.sendCommand({
                                 tabId: tabID
                             }, "Network.setUserAgentOverride", {
-                                userAgent: getDeepCopy(newUAStr, true)
+                                userAgent: getDeepCopy(newUAStr),
+                                platform: getDeepCopy(platformResult.getResult())
                             });
                         });
                     }
@@ -138,12 +158,12 @@ function attachDebugger(tabID, newUAStr) {
     });
 }
 
-// applies the changed user agent string to tabs
-function applyUAStr(newUAStr) {
+// applies the changed user agent string to all tabs
+const applyUAStr = function(newUAStr) {
     updateOpenWindows();
+    updatePlatformResult(newUAStr);
     let tabsCollection = getAllTabs();
     
-    chromeStoreDefaultUA(getDeepCopy(newUAStr, true));
     tabsCollection.forEach((tabItem) => {
         if (isGoodURL(tabItem.url)) {
             attachDebugger(tabItem.id, newUAStr);
@@ -163,21 +183,21 @@ chrome.runtime.onInstalled.addListener((details) => {
     }
 });
 chrome.tabs.onUpdated.addListener((_) => {
-    chromeGetDefaultUA();
+    // if new tab is opened and updated, attach debugger and override UA string
+    updateStorageUAStr();
     applyUAStr(storageUAStr.getResult());
 });
-chrome.storage.onChanged.addListener(() => {
-
+chrome.storage.onChanged.addListener((_) => {
     // detach debugger from every tab its attached to
     chrome.debugger.getTargets((result) => {
-        result.forEach((info) => {
-            if (info.attached) {
-                chrome.debugger.detach({tabId: info.tabId});
+        result.forEach((infoItem) => {
+            if (infoItem.attached) {
+                chrome.debugger.detach({tabId: infoItem.tabId});
             }
         });
     });
 
     // attach debugger to every tab again and override with new UA string
-    chromeGetDefaultUA();
+    updateStorageUAStr();
     applyUAStr(storageUAStr.getResult());
 });
