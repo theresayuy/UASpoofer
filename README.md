@@ -1,6 +1,6 @@
 <div align="center">
 <img src="img/readme/icon.png" alt="UASpoofer Icon"><br>
-<p>✨ Lie about your browser and computer while surfing the web. ✨</p><br>
+<p>✨ Lie about your browser and computer while surfing the web. ✨</p>
 <h1>UASpoofer</h1><br>
 </div>
 
