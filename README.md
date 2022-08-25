@@ -43,3 +43,4 @@ Special thanks to these projects and technologies:
 - [Chrome Extension APIs](https://developer.chrome.com/docs/extensions/reference/) 
 - [tabler icons](https://tabler-icons.io/) for the icon
 - [creepjs](https://abrahamjuliot.github.io/creepjs/) by [abrahamjuliot](https://github.com/abrahamjuliot)
+- [Most Common User Agents](https://techblog.willshouse.com/2012/01/03/most-common-user-agents/) by Tech Blog (wh) for user agent strings.
