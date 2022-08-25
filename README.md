@@ -5,7 +5,7 @@
 </div>
 
 ## About
-An extension for chromium desktop browsers that can spoof the browser's  `navigator.userAgent` property with a more common user agent.
+An extension for Chromium-based desktop browsers that can spoof the browser's `navigator.userAgent` property with a more common user agent.
 
 ![Extension popup without activity](img/readme/no-activity.png)
 
@@ -16,7 +16,7 @@ This extension can also copy the user agent string to the clipboard and test the
 
 ## Usage
 ### Loading Extension to Browser
-This extension can be used on any desktop chromium based browser (eg. Google Chrome, Microsoft Edge, Chromium, etc.)
+This extension can be used on any desktop Chromium-based browser (eg. Google Chrome, Microsoft Edge, Chromium, etc.)
 
 1. Clone this repo locally or download the source code of the main branch. Fork this repo if you want to contribute to development. 
 2. Open any Chromium based browser and navigate to **`chrome://extensions`**.
