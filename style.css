@@ -1,0 +1,212 @@
+body {
+    width: 600px;  
+    font-family: sans-serif;
+    color: white;
+    text-align:center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+p.h4 {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes selectHover {
+    0% {
+        width: 48%;
+        height: 22%;
+        color: rgba(255, 255, 255, 0.7);
+        border: 2px solid rgba(255, 255, 255, 0.7);         
+    }
+    33% {
+        width: 48.6%;
+        height: 23.7%;
+        color: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.8); 
+    }
+    66% {
+        width: 49.3%;
+        height: 25.4%;
+        color: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(255, 255, 255, 0.9); 
+    }
+    100% {
+        width: 50%;
+        height: 27%;
+        color: white;
+        border: 2px solid white;  
+    }
+}
+
+select {
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #38454C;
+    color: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: .25rem;
+    width: 48%;
+    height: 22%;
+}
+
+select:hover, select:active {
+    width: 50%;
+    height: 27%;
+    color: white;
+    border: 2px solid white; 
+}
+
+select:hover {
+    animation-name: selectHover;
+    animation-duration: 0.25s;
+}
+
+.blank-space {
+    height: 40px;
+}
+
+#popup {
+    background-color: #445661;
+}
+
+@keyframes uaStrHover {
+    0% {
+        color: rgba(255, 255, 255, 0.7);    
+    }
+    25% {
+        color: rgba(255, 255, 255, 0.77);
+    }
+    50% {
+        color: rgba(255, 255, 255, 0.84);
+    }
+    75% {
+        color: rgba(255, 255, 255, 0.91);
+    }
+    100% {
+        color: white;
+    }
+}
+
+#ua-str {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#ua-str:hover {
+    color: white;
+    font-size: 18px;
+    animation-name: uaStrHover;
+    animation-duration: 0.75s;
+}
+
+#apply-msg {
+    font-size: 14px;
+    display: none;
+}
+
+#div-choose-product {
+    height: 130px;
+}
+
+#div-ua-changes {
+    height: 290px;
+}
+
+@keyframes BtnRow1Hover {
+    0% {
+        width: 12%;
+        height: 10%;
+        color: rgba(255, 255, 255, 0.7);
+        border: 2px solid rgba(255, 255, 255, 0.7);        
+    }
+    33% {
+        width: 12.3%;
+        height: 10.7%;
+        color: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.8);   
+    }
+    66% {
+        width: 12.6%;
+        height: 11.3%;
+        color: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(255, 255, 255, 0.9); 
+    }
+    100% {
+        width: 13%;
+        height: 12%;
+        color: white;
+        border: 2px solid white;
+    }
+}
+
+.btn-row-1 {
+    background-color: #38454C;
+    color: rgba(255, 255, 255, 0.7);
+    border: 2px solid #38454C;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    border-radius: .25rem;
+    font-weight: bold;
+    width: 12%;
+    height: 10%
+}
+
+.btn-row-1:hover {
+    color: white;
+    border: 2px solid white;
+    animation-name: BtnRow1Hover;
+    animation-duration: 0.25s;
+    width: 13%;
+    height: 12%;    
+}
+
+
+@keyframes BtnRow2Hover {
+    0% {
+        width: 32%;
+        height: 10%;
+        color: rgba(255, 255, 255, 0.7);
+        border: 2px solid rgba(255, 255, 255, 0.7);        
+    }
+    33% {
+        width: 32.3%;
+        height: 10.7%;
+        color: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+    66% {
+        width: 32.6%;
+        height: 11.3%;
+        color: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(255, 255, 255, 0.9);
+    }
+    100% {
+        width: 33%;
+        height: 12%;
+        color: white;
+        border: 2px solid white;  
+    }
+}
+
+.btn-row-2 {
+    background-color: #38454C;
+    color: rgba(255, 255, 255, 0.7);
+    border: 2px solid #38454C;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    border-radius: .25rem;
+    font-weight: bold;
+    width: 32%;
+    height: 10%;
+}
+
+.btn-row-2:hover {
+    animation-name: BtnRow2Hover;
+    animation-duration: 0.25s;    
+    width: 33%;
+    height: 12%;
+    color: white;
+    border: 2px solid white;     
+}
