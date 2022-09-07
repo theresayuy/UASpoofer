@@ -37,9 +37,8 @@ When visiting the creepjs website to help test and debug this program, the tab h
 ### Lack of Testing
 This extension has only been tested on Brave and Google Chrome. Issues from other browsers are unknown.
 
-## Resources
-Special thanks to these projects and technologies:
-- [jquery 3.6.0](https://code.jquery.com/jquery-3.6.0.js)
+## Technologies and Projects Used
+- HTML, CSS, Vanilla JS, [jquery](https://code.jquery.com)
 - [Chrome Extension APIs](https://developer.chrome.com/docs/extensions/reference/) 
 - [tabler icons](https://tabler-icons.io/) for the icon
 - [creepjs](https://abrahamjuliot.github.io/creepjs/) by [abrahamjuliot](https://github.com/abrahamjuliot)
