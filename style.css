@@ -39,6 +39,7 @@ select {
     border-radius: .25rem;
     width: 48%;
     height: 22%;
+    outline: none;
 }
 
 select:hover, select:active {
@@ -50,7 +51,7 @@ select:hover, select:active {
 
 select:hover {
     animation-name: selectHover;
-    animation-duration: 0.25s;
+    animation-duration: 1s;
 }
 
 .blank-space {
