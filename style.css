@@ -51,7 +51,7 @@ select:hover, select:active {
 
 select:hover {
     animation-name: selectHover;
-    animation-duration: 1s;
+    animation-duration: 0.25s;
 }
 
 .blank-space {
