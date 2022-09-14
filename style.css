@@ -16,25 +16,13 @@ p.h4 {
 }
 
 @keyframes selectHover {
-    0% {
+    from {
         width: 48%;
         height: 22%;
         color: rgba(255, 255, 255, 0.7);
         border: 2px solid rgba(255, 255, 255, 0.7);         
     }
-    33% {
-        width: 48.6%;
-        height: 23.7%;
-        color: rgba(255, 255, 255, 0.8);
-        border: 2px solid rgba(255, 255, 255, 0.8); 
-    }
-    66% {
-        width: 49.3%;
-        height: 25.4%;
-        color: rgba(255, 255, 255, 0.9);
-        border: 2px solid rgba(255, 255, 255, 0.9); 
-    }
-    100% {
+    to {
         width: 50%;
         height: 27%;
         color: white;
@@ -51,6 +39,7 @@ select {
     border-radius: .25rem;
     width: 48%;
     height: 22%;
+    outline: none;
 }
 
 select:hover, select:active {
@@ -62,7 +51,7 @@ select:hover, select:active {
 
 select:hover {
     animation-name: selectHover;
-    animation-duration: 0.25s;
+    animation-duration: 1s;
 }
 
 .blank-space {
@@ -74,19 +63,10 @@ select:hover {
 }
 
 @keyframes uaStrHover {
-    0% {
-        color: rgba(255, 255, 255, 0.7);    
+    from {
+        color: rgba(255, 255, 255, 0.7);
     }
-    25% {
-        color: rgba(255, 255, 255, 0.77);
-    }
-    50% {
-        color: rgba(255, 255, 255, 0.84);
-    }
-    75% {
-        color: rgba(255, 255, 255, 0.91);
-    }
-    100% {
+    to {
         color: white;
     }
 }
@@ -117,25 +97,13 @@ select:hover {
 }
 
 @keyframes BtnRow1Hover {
-    0% {
+    from {
         width: 12%;
         height: 10%;
         color: rgba(255, 255, 255, 0.7);
         border: 2px solid rgba(255, 255, 255, 0.7);        
     }
-    33% {
-        width: 12.3%;
-        height: 10.7%;
-        color: rgba(255, 255, 255, 0.8);
-        border: 2px solid rgba(255, 255, 255, 0.8);   
-    }
-    66% {
-        width: 12.6%;
-        height: 11.3%;
-        color: rgba(255, 255, 255, 0.9);
-        border: 2px solid rgba(255, 255, 255, 0.9); 
-    }
-    100% {
+    to {
         width: 13%;
         height: 12%;
         color: white;
@@ -165,25 +133,13 @@ select:hover {
 
 
 @keyframes BtnRow2Hover {
-    0% {
+    from {
         width: 32%;
         height: 10%;
         color: rgba(255, 255, 255, 0.7);
         border: 2px solid rgba(255, 255, 255, 0.7);        
     }
-    33% {
-        width: 32.3%;
-        height: 10.7%;
-        color: rgba(255, 255, 255, 0.8);
-        border: 2px solid rgba(255, 255, 255, 0.8);
-    }
-    66% {
-        width: 32.6%;
-        height: 11.3%;
-        color: rgba(255, 255, 255, 0.9);
-        border: 2px solid rgba(255, 255, 255, 0.9);
-    }
-    100% {
+    to {
         width: 33%;
         height: 12%;
         color: white;
