@@ -1,113 +1,8 @@
-//////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                      //
-//                              HTML ELEMENTS AND USER AGENTS                           //
-//                                                                                      //
-//////////////////////////////////////////////////////////////////////////////////////////
-const OS_OPTIONS = [
-    {val: "DEVICES/OPERATING SYSTEMS", id:"OS---0", ua: ""},
-    {val: "Windows 10", id: "OS---win10", ua: "Windows NT 10.0; Win64; x64"},
-    {val: "Windows 10 WoW64", id: "OS---win10--wow64", ua: "Windows NT 10.0; WOW64"},
-    {val: "Windows 8.1", id: "OS---win8-1", ua: "Windows NT 6.3; Win64; x64"},
-    {val: "Windows 7", id: "OS---win7", ua: "Windows NT 6.1; Win64; x64"},
-    {val: "Windows Vista", id: "OS---winvista", ua: "Windows; U; Windows NT 6.0; en-US"},
-    {val: "Windows XP", id: "OS---winxp", ua: "Windows; U; Windows NT 5.1; en-US"},
-    {val: "MacOS 10.15.0", id:"OS---macos10-15-0", ua: "Macintosh; Intel Mac OS X 10_15"},
-    {val: "Linux x86_64", id:"OS---linux--x8664", ua: "X11; Linux x86_64"},
-    {val: "Linux i686", id: "OS---linux--i686", ua: "X11; Linux i686"},
-    {val: "Linux aarch64", id: "OS---linux--aarch64", ua: "X11; Linux aarch64"},
-    {val: "Samsung Galaxy A7/Android 8.0.0", id:"OS---android8-0-0---SMA750FN", ua: "Linux; Android 8.0.0; SM-A750FN"},
-    {val: "Generic/Android 10", id: "OS---andrdoid10---generic", ua: "Linux; Android 10; K"},
-    {val: "Samsung Galaxy S9/Android 10", id: "OS---android10---smg960u", ua: "Linux; Android 10; SM-G960U"},
-    {val: "Pixel 6 Pro/Android 12", id: "OS---android12---p6p", ua: "Linux; Android 12; Pixel 6 Pro"},
-    {val: "iPhone/iOS 15.2", id: "OS---ios15-2---iphone", ua: "iPhone; CPU OS 15_2 like Mac OS X"}, 
-    {val: "iPad/iOS 15.2", id: "OS---ios15-2---ipad", ua: "iPad; CPU OS 15_2 like Mac OS X"},
-    {val: "Xbox One", id: "OS---win10---xboxone", ua: "Windows NT 10.0; Win64; x64; Xbox; Xbox One"}
-]; // OS user agent options
-const BROWSER_OPTIONS = [
-    {val: "BROWSERS", id:"BROWSER---0", ua: ""},
-    {
-        val: "Chrome 104.0.0.0", id: "BROWSER---chrome104-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"        
-    },
-    {
-        val: "Chrome 103.0.0.0", id: "BROWSER---chrome103-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
-    },
-    {
-        val: "Edge 103.0.5026.0", id: "BROWSER---edge103-0-5026-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5026.0 Safari/537.36 Edg/103.0.1253.0"
-    },
-    {
-        val: "Safari 15.4", id: "BROWSER---safari15-4", 
-        ua: ") AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15"
-    },
-    {
-        val: "Firefox 103.0", id: "BROWSER---ff103-0", 
-        ua: "; rv:103.0) Gecko/20100101 Firefox/103.0"
-    },
-    {
-        val: "Firefox 101.0", id: "BROWSER---ff101-0", 
-        ua: "; rv:101.0) Gecko/20100101 Firefox/101.0"
-    },
-    {
-        val: "Firefox 52.0", id: "BROWSER---ff52-0",
-        ua: "; rv:52.0) Gecko/20100101 Firefox/52.0"
-    }
-]; // Browser user agent options
-
-// some info about HTML elements that will be added frequently
-const HTML_BR = {tag:"br", class: null, id: null, value: null, innerHTML: null};
-const HTML_TAB_SPAN = {tag: "span", class: "tab-span", innerHTML: "&#9;", id: null, value: null};
-const HTML_BLANK_SPACE = {tag: "div", class: "blank-space", innerHTML: null, id: null, value: null};
-
-// some info about HTML elements whose id or class are frequently accessed in this program
-const HTML_CHOOSE_PRODUCT = {
-    tag: "div", id: "div-choose-product", 
-    class: null, value: null, innerHTML: null
-};
-const HTML_UA_CHANGES = {
-    tag: "div", id: "div-ua-changes",
-    class: null, value: null, innerHTML: null
-};
-const HTML_SELECT_OS = {
-    tag: "select", id: "select-os-choice",
-    class: null, value: null, innerHTML: null
-};
-const HTML_SELECT_BROWSER = {
-    tag: "select", id: "select-browser-choice",
-    class: null, value: null, innerHTML: null
-};
-const HTML_P_UA_STR = {
-    tag: "p", id: "ua-str", innerHTML: "something went wrong",
-    class: null, value: null
-};
-const HTML_P_APPLY_MSG = {
-    tag: "p", id: "apply-msg", innerHTML: null,
-    class: null, value: null
-};
-const HTML_BTN_COPY_UA = {
-    tag: "button", id: "copy-ua-btn", class: "btn-row-1",
-    innerHTML: "COPY", value: null
-};
-const HTML_BTN_TEST_UA = {
-    tag: "button", id: "test-ua-btn", value: null,
-    class: HTML_BTN_COPY_UA.class,
-    innerHTML: "TEST"
-};
-const HTML_BTN_APPLY_ALL = {
-    tag: "button", id: "change-apply-all", class: "btn-row-2",
-    innerHTML: "APPLY TO ALL WINDOWS", value: null
-};
-const HTML_BTN_RESET = {
-    tag: "button", id: "change-reset", class: HTML_BTN_APPLY_ALL.class,
-    innerHTML: "RESET", value: null
-};
-
-//////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                      //
-//                       DEALS WITH ADDING ELEMENTS TO INDEX.HTML                       //
-//                                                                                      //
-//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+//                                                                         //
+//                       DEALS WITH ADDING ELEMENTS                        //
+//                                                                         //
+/////////////////////////////////////////////////////////////////////////////
 
 // creates an element with a specific tag and assigns some attribute values.
 // This element is then added to index.html
@@ -158,14 +53,12 @@ const addOptions = (optionsArr, selectID) => {
 
 const setApplyMsg = function(newMsg, func1) {
     $(`#${HTML_P_APPLY_MSG.id}`).html(newMsg);
-    $(`#${HTML_P_APPLY_MSG.id}`).fadeIn(700);
-    setTimeout(() => {
-        $(`#${HTML_P_APPLY_MSG.id}`).fadeOut(700);
-        
-        if (func1) {
-            setTimeout(func1, 1000);        
-        }
-    }, 2000);
+    $(`#${HTML_P_APPLY_MSG.id}`).fadeIn(700, () => {
+        const newMsgStaysVisible = setTimeout(() => {
+            $(`#${HTML_P_APPLY_MSG.id}`).fadeOut(700, func1); 
+            clearTimeout(newMsgStaysVisible);        
+        }, 2000);  
+    });
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -258,23 +151,26 @@ if (localStorage.getItem("uaStrLocal") === null) {
                         [navigator.userAgent, navigator.userAgent]));
 }
 
-// change inner HTML of some elements
+// set the ua str to the default one
 HTML_P_UA_STR.innerHTML = getUAStr(false);
 
-// create and insert two divs
-[HTML_CHOOSE_PRODUCT, HTML_UA_CHANGES].forEach((item) => {
+[
+    HTML_BR, HTML_BR,
+    HTML_CHOOSE_PRODUCT, 
+    HTML_UA_CHANGES
+].forEach((item) => {
     addElement(item, "popup");
 });
 
 // add elements to choose product div
 [
-    HTML_BLANK_SPACE,// blank space div 
-    HTML_SELECT_OS, // a select element for OS
-    HTML_BR, HTML_BR,
-    HTML_SELECT_BROWSER // a select element for browser
+    HTML_SELECT_OS_PARENT,
+    HTML_SELECT_BROWSER_PARENT 
 ].forEach((item) => {
     addElement(item, HTML_CHOOSE_PRODUCT.id);
-});
+}); // div to put the select in
+addElement(HTML_SELECT_OS, HTML_SELECT_OS_PARENT.id);
+addElement(HTML_SELECT_BROWSER, HTML_SELECT_BROWSER_PARENT.id);
 
 // create and insert options for product select element
 addOptions(OS_OPTIONS, HTML_SELECT_OS.id);
@@ -282,9 +178,12 @@ addOptions(BROWSER_OPTIONS, HTML_SELECT_BROWSER.id);
 
 // create and insert elements for the ua-changes div
 [
-    HTML_BR, // br
-    {tag: "p", innerHTML: "USER AGENT STRING", class: "h4",
-    id: null, value: null},
+    {
+        tag: "p", 
+        innerHTML: "USER AGENT STRING", 
+        class: "h4",
+        id: null, value: null
+    },
     HTML_P_UA_STR, // paragraph containing UA string
     HTML_BTN_COPY_UA, HTML_TAB_SPAN, HTML_BTN_TEST_UA,
     HTML_BR, HTML_BR, 
@@ -313,10 +212,11 @@ $(`#${HTML_BTN_COPY_UA.id}`).bind("click", () => {
 
 // listener to open creepjs website in new window when the "TEST" button is clicked
 $(`#${HTML_BTN_TEST_UA.id}`).bind("click", () => {
-    setApplyMsg("You will be directed to creepjs website.<br> Scroll to the Navigator section to view results.", 
-                () => {
-                    window.open("https://abrahamjuliot.github.io/creepjs", "_blank");
-                });
+    setApplyMsg(
+        "You will be directed to creepjs website.<br> Scroll to the Navigator section to view results.", 
+        () => {
+            window.open("https://abrahamjuliot.github.io/creepjs", "_blank");
+        });
 });
 
 // listeners to apply the changes to user agent string in the browser 

@@ -1,5 +1,5 @@
 body {
-    width: 600px;  
+    width: 600px; 
     font-family: sans-serif;
     color: white;
     text-align:center;
@@ -7,6 +7,18 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#popup {
+    background-color: #445661;
+}
+
+#div-choose-product {
+    height: 100px;
+}
+
+#div-ua-changes {
+    height: 250px;
 }
 
 p.h4 {
@@ -18,16 +30,22 @@ p.h4 {
 @keyframes selectHover {
     from {
         width: 48%;
-        height: 22%;
+        height: 80%;
         color: rgba(255, 255, 255, 0.7);
         border: 2px solid rgba(255, 255, 255, 0.7);         
     }
     to {
         width: 50%;
-        height: 27%;
+        height: 87%;
         color: white;
         border: 2px solid white;  
     }
+}
+
+.select-parent {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 40%;
 }
 
 select {
@@ -38,13 +56,13 @@ select {
     border: 2px solid rgba(0, 0, 0, 0);
     border-radius: .25rem;
     width: 48%;
-    height: 22%;
+    height: 80%;
     outline: none;
 }
 
 select:hover, select:active {
     width: 50%;
-    height: 27%;
+    height: 87%;
     color: white;
     border: 2px solid white; 
 }
@@ -52,14 +70,6 @@ select:hover, select:active {
 select:hover {
     animation-name: selectHover;
     animation-duration: 0.25s;
-}
-
-.blank-space {
-    height: 40px;
-}
-
-#popup {
-    background-color: #445661;
 }
 
 @keyframes uaStrHover {
@@ -74,11 +84,12 @@ select:hover {
 #ua-str {
     font-size: 18px;
     color: rgba(255, 255, 255, 0.7);
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #ua-str:hover {
     color: white;
-    font-size: 18px;
     animation-name: uaStrHover;
     animation-duration: 0.75s;
 }
@@ -88,24 +99,16 @@ select:hover {
     display: none;
 }
 
-#div-choose-product {
-    height: 130px;
-}
-
-#div-ua-changes {
-    height: 290px;
-}
-
 @keyframes BtnRow1Hover {
     from {
         width: 12%;
-        height: 10%;
+        height: 13%;
         color: rgba(255, 255, 255, 0.7);
         border: 2px solid rgba(255, 255, 255, 0.7);        
     }
     to {
         width: 13%;
-        height: 12%;
+        height: 15%;
         color: white;
         border: 2px solid white;
     }
@@ -119,7 +122,7 @@ select:hover {
     border-radius: .25rem;
     font-weight: bold;
     width: 12%;
-    height: 10%
+    height: 13%
 }
 
 .btn-row-1:hover {
@@ -128,20 +131,20 @@ select:hover {
     animation-name: BtnRow1Hover;
     animation-duration: 0.25s;
     width: 13%;
-    height: 12%;    
+    height: 15%;    
 }
 
 
 @keyframes BtnRow2Hover {
     from {
         width: 32%;
-        height: 10%;
+        height: 13%;
         color: rgba(255, 255, 255, 0.7);
         border: 2px solid rgba(255, 255, 255, 0.7);        
     }
     to {
         width: 33%;
-        height: 12%;
+        height: 15%;
         color: white;
         border: 2px solid white;  
     }
@@ -155,14 +158,14 @@ select:hover {
     border-radius: .25rem;
     font-weight: bold;
     width: 32%;
-    height: 10%;
+    height: 13%;
 }
 
 .btn-row-2:hover {
     animation-name: BtnRow2Hover;
     animation-duration: 0.25s;    
     width: 33%;
-    height: 12%;
+    height: 15%;
     color: white;
     border: 2px solid white;     
 }
