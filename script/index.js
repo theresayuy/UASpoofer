@@ -4,44 +4,21 @@
 //                                                                         //
 /////////////////////////////////////////////////////////////////////////////
 
-// creates an element with a specific tag and assigns some attribute values.
-// This element is then added to index.html
-const addElement = (eInfo, eAppendToId) => {
-    const ATTR = ["id", "class", "value"];
-    let result = null;
-
-    if (eInfo.tag != 0) {
-        result = document.createElement(eInfo.tag);
-
-        for (let i = 0; i < ATTR.length; i++) {
-            if (eInfo[ATTR[i]] !== null) {
-                result.setAttribute(
-                    ATTR[i], 
-                    eInfo[ATTR[i]]
-                );
-            }
-        }
-
-        if (eInfo.innerHTML !== null) {
-            result.innerHTML = eInfo.innerHTML;
-        }
-
-        if (eAppendToId !== null) {
-            $(`#${eAppendToId}`).append(result);        
-        }         
-    }
+// 
+const updatePopup = (component, append, parentID) => {
+    const root = document.getElementById(parentID || "popup");
+    root.innerHTML = (append ? root.innerHTML : "") + component;
 }
 
 // adds option elements to the select object
 const addOptions = (optionsArr, selectID) => {
+    let i = 0;    
     optionsArr.forEach((option) => {
-        addElement({
-            tag: "option", 
-            id: option.id, 
-            value: option.val, 
-            class: null,
-            innerHTML: option.val
-        }, selectID);        
+        updatePopup(Option({
+            id: option.id,
+            val: option.val,        
+        }), (i > 0), selectID); 
+        i++;       
     });    
 }
 
@@ -52,10 +29,10 @@ const addOptions = (optionsArr, selectID) => {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 const setApplyMsg = function(newMsg, func1) {
-    $(`#${HTML_P_APPLY_MSG.id}`).html(newMsg);
-    $(`#${HTML_P_APPLY_MSG.id}`).fadeIn(700, () => {
+    $(`#apply-msg`).html(newMsg);
+    $(`#apply-msg`).fadeIn(700, () => {
         const newMsgStaysVisible = setTimeout(() => {
-            $(`#${HTML_P_APPLY_MSG.id}`).fadeOut(700, func1); 
+            $(`#apply-msg`).fadeOut(700, func1); 
             clearTimeout(newMsgStaysVisible);        
         }, 2000);  
     });
@@ -110,13 +87,13 @@ const getFinalizedUAStr = function(uaStr) {
 // updates the UA string that is displayed when a new one is selected
 const updateUAStr = function() {
     let uaStr = "Mozilla/5.0 (";
-    if (hasOptionChange(HTML_SELECT_BROWSER.id) && hasOptionChange(HTML_SELECT_OS.id)) {
-        uaStr = addToUAStr(uaStr, OS_OPTIONS, HTML_SELECT_OS.id);
-        uaStr = addToUAStr(uaStr, BROWSER_OPTIONS, HTML_SELECT_BROWSER.id);
+    if (hasOptionChange("select-browser") && hasOptionChange("select-os")) {
+        uaStr = addToUAStr(uaStr, OS_OPTIONS, "select-os");
+        uaStr = addToUAStr(uaStr, BROWSER_OPTIONS, "select-browser");
         uaStr = getFinalizedUAStr(uaStr);
-        $(`#${HTML_P_UA_STR.id}`).html(uaStr);
-    } else if (!hasOptionChange(HTML_SELECT_BROWSER.id) && !hasOptionChange(HTML_SELECT_OS.id)) {
-        $(`#${HTML_P_UA_STR.id}`).html(getUAStr(false));
+        $(`#ua-str`).html(uaStr);
+    } else if (!hasOptionChange("select-browser") && !hasOptionChange("select-os")) {
+        $(`#ua-str`).html(getUAStr(false));
     }
 }
 
@@ -151,48 +128,39 @@ if (localStorage.getItem("uaStrLocal") === null) {
                         [navigator.userAgent, navigator.userAgent]));
 }
 
-// set the ua str to the default one
-HTML_P_UA_STR.innerHTML = getUAStr(false);
-
+// assemble the basic layout
 [
-    HTML_BR, HTML_BR,
-    HTML_CHOOSE_PRODUCT, 
-    HTML_UA_CHANGES
+    LineBreak(), LineBreak(),
+    Section({id: "choose-product", 
+        innerHTML: `${SelectParent({
+            innerHTML: SelectOptions({
+                id: "select-os"               
+            })
+        })}
+        ${SelectParent({
+            innerHTML: SelectOptions({id: "select-browser"})
+        })}`        
+    }), 
+    Section({id: "ua-changes", 
+        innerHTML: `
+            ${UAStr({innerHTML: getUAStr(false)})}
+            ${ButtonRow1({id: "copy-btn", innerHTML: "COPY"})}
+            ${TabSpan()}
+            ${ButtonRow1({id: "test-btn", innerHTML: "TEST"})}
+            ${LineBreak()}${LineBreak()}
+            ${ButtonRow2({id: "apply-all-btn", innerHTML: "APPLY"})}
+            ${TabSpan()}
+            ${ButtonRow2({id: "reset-btn", innerHTML: "RESET"})}
+            ${LineBreak()}${LineBreak()}
+            ${ApplyMsg()}
+       `})
 ].forEach((item) => {
-    addElement(item, "popup");
+    updatePopup(item, true);
 });
-
-// add elements to choose product div
-[
-    HTML_SELECT_OS_PARENT,
-    HTML_SELECT_BROWSER_PARENT 
-].forEach((item) => {
-    addElement(item, HTML_CHOOSE_PRODUCT.id);
-}); // div to put the select in
-addElement(HTML_SELECT_OS, HTML_SELECT_OS_PARENT.id);
-addElement(HTML_SELECT_BROWSER, HTML_SELECT_BROWSER_PARENT.id);
 
 // create and insert options for product select element
-addOptions(OS_OPTIONS, HTML_SELECT_OS.id);
-addOptions(BROWSER_OPTIONS, HTML_SELECT_BROWSER.id);
-
-// create and insert elements for the ua-changes div
-[
-    {
-        tag: "p", 
-        innerHTML: "USER AGENT STRING", 
-        class: "h4",
-        id: null, value: null
-    },
-    HTML_P_UA_STR, // paragraph containing UA string
-    HTML_BTN_COPY_UA, HTML_TAB_SPAN, HTML_BTN_TEST_UA,
-    HTML_BR, HTML_BR, 
-    HTML_BTN_APPLY_ALL, HTML_TAB_SPAN, HTML_BTN_RESET,
-    HTML_BR, HTML_BR, HTML_P_APPLY_MSG
-    
-].forEach((item) => {
-    addElement(item, HTML_UA_CHANGES.id);
-});
+addOptions(OS_OPTIONS, "select-os");
+addOptions(BROWSER_OPTIONS, "select-browser");
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                      //
@@ -201,17 +169,17 @@ addOptions(BROWSER_OPTIONS, HTML_SELECT_BROWSER.id);
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // listeners to change the displayed UA string when options are selected
-$(`#${HTML_SELECT_OS.id}`).bind("change", updateUAStr);
-$(`#${HTML_SELECT_BROWSER.id}`).bind("change", updateUAStr);
+$(`#select-os`).bind("change", updateUAStr);
+$(`#select-browser`).bind("change", updateUAStr);
 
 // listener to copy the user agent when the "COPY" button is clicked
-$(`#${HTML_BTN_COPY_UA.id}`).bind("click", () => {
-    navigator.clipboard.writeText($(`#${HTML_P_UA_STR.id}`).html());
+$(`#copy-btn`).bind("click", () => {
+    navigator.clipboard.writeText($(`#ua-str`).html());
     setApplyMsg("Copied!");
 });
 
 // listener to open creepjs website in new window when the "TEST" button is clicked
-$(`#${HTML_BTN_TEST_UA.id}`).bind("click", () => {
+$(`#test-btn`).bind("click", () => {
     setApplyMsg(
         "You will be directed to creepjs website.<br> Scroll to the Navigator section to view results.", 
         () => {
@@ -220,18 +188,18 @@ $(`#${HTML_BTN_TEST_UA.id}`).bind("click", () => {
 });
 
 // listeners to apply the changes to user agent string in the browser 
-$(`#${HTML_BTN_APPLY_ALL.id}`).bind("click", 
+$(`#apply-all-btn`).bind("click", 
 () => {
-    storeDefaultUA($(`#${HTML_P_UA_STR.id}`).html());
+    storeDefaultUA($(`#ua-str`).html());
     chromeStoreDefaultUA(getUAStr(false));
     setApplyMsg("Changes applied", null);
 });
-$(`#${HTML_BTN_RESET.id}`).bind("click",  
+$(`#reset-btn`).bind("click",  
 () => {
     storeDefaultUA(getUAStr(true));
     chromeStoreDefaultUA(getUAStr(true));
-    $(`#${HTML_P_UA_STR.id}`).html(getUAStr(true));
-    $(`#${HTML_SELECT_BROWSER.id}`).prop("value", BROWSER_OPTIONS[0].val);
-    $(`#${HTML_SELECT_OS.id}`).prop("value", OS_OPTIONS[0].val);
+    $(`#ua-str`).html(getUAStr(true));
+    $(`#select-browser`).prop("value", BROWSER_OPTIONS[0].val);
+    $(`#select-options`).prop("value", OS_OPTIONS[0].val);
     setApplyMsg("User agent was reset.", null);
 });
