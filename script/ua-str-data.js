@@ -5,34 +5,34 @@ const BROWSER_OPTIONS = [
         ua: ""
     },
     {
-        val: "Chrome 104.0.0.0", 
-        id: "BROWSER---chrome104-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"        
+        val: "Chrome 110.0.0.0", 
+        id: "BROWSER---chrome110-0-0-0", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"        
     },
     {
-        val: "Chrome 103.0.0.0", 
-        id: "BROWSER---chrome103-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+        val: "Chrome 109.0.0.0", 
+        id: "BROWSER---chrome109-0-0-0", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     },
     {
-        val: "Edge 103.0.5026.0", 
+        val: "Edge 110.0", 
         id: "BROWSER---edge103-0-5026-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5026.0 Safari/537.36 Edg/103.0.1253.0"
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41"
     },
     {
-        val: "Safari 15.4", 
+        val: "Safari, Generic Like MacOS", 
         id: "BROWSER---safari15-4", 
-        ua: ") AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15"
+        ua: ") AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15"
     },
     {
-        val: "Firefox 103.0", 
-        id: "BROWSER---ff103-0", 
-        ua: "; rv:103.0) Gecko/20100101 Firefox/103.0"
+        val: "Firefox 110.0", 
+        id: "BROWSER---ff110-0", 
+        ua: "; rv:109.0) ecko/20100101 Firefox/110.0"
     },
     {
-        val: "Firefox 101.0", 
-        id: "BROWSER---ff101-0", 
-        ua: "; rv:101.0) Gecko/20100101 Firefox/101.0"
+        val: "Firefox 109.0", 
+        id: "BROWSER---ff109-0", 
+        ua: "; rv:109.0) Gecko/20100101 Firefox/109.0"
     },
     {
         val: "Firefox 52.0", 
