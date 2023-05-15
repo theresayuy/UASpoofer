@@ -5,34 +5,39 @@ const BROWSER_OPTIONS = [
         ua: ""
     },
     {
-        val: "Chrome 110.0.0.0", 
-        id: "BROWSER---chrome110-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"        
+        val: "Chrome 113.0.0.0", 
+        id: "BROWSER---chrome113-0-0-0", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"        
     },
     {
-        val: "Chrome 109.0.0.0", 
-        id: "BROWSER---chrome109-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
+        val: "Chrome 112.0.0.0", 
+        id: "BROWSER---chrome112-0-0-0", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"        
     },
     {
-        val: "Edge 110.0", 
-        id: "BROWSER---edge103-0-5026-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41"
+        val: "Chrome 111.0.0.0", 
+        id: "BROWSER---chrome111-0-0-0", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+    },
+    {
+        val: "Edge 112.0", 
+        id: "BROWSER---edge112", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48"
     },
     {
         val: "Safari, Generic Like MacOS", 
-        id: "BROWSER---safari15-4", 
+        id: "BROWSER---safari16-3", 
         ua: ") AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15"
     },
     {
-        val: "Firefox 110.0", 
-        id: "BROWSER---ff110-0", 
-        ua: "; rv:109.0) ecko/20100101 Firefox/110.0"
+        val: "Firefox 112.0", 
+        id: "BROWSER---ff112-0", 
+        ua: "; rv:109.0) ecko/20100101 Firefox/112.0"
     },
     {
-        val: "Firefox 109.0", 
-        id: "BROWSER---ff109-0", 
-        ua: "; rv:109.0) Gecko/20100101 Firefox/109.0"
+        val: "Firefox 111.0", 
+        id: "BROWSER---ff111-0", 
+        ua: "; rv:109.0) Gecko/20100101 Firefox/111.0"
     },
     {
         val: "Firefox 52.0", 
