@@ -5,6 +5,11 @@ const BROWSER_OPTIONS = [
         ua: ""
     },
     {
+        val: "Chrome 114.0.0.0", 
+        id: "BROWSER---chrome114-0-0-0", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"        
+    },
+    {
         val: "Chrome 113.0.0.0", 
         id: "BROWSER---chrome113-0-0-0", 
         ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"        
@@ -12,32 +17,32 @@ const BROWSER_OPTIONS = [
     {
         val: "Chrome 112.0.0.0", 
         id: "BROWSER---chrome112-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"        
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
     },
     {
-        val: "Chrome 111.0.0.0", 
-        id: "BROWSER---chrome111-0-0-0", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+        val: "Edge 113.0", 
+        id: "BROWSER---edge113", 
+        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.57"
     },
     {
-        val: "Edge 112.0", 
-        id: "BROWSER---edge112", 
-        ua: ") AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.48"
+        val: "Safari v16.5, Generic Like MacOS", 
+        id: "BROWSER---safari16-5", 
+        ua: ") AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15"
     },
     {
-        val: "Safari, Generic Like MacOS", 
-        id: "BROWSER---safari16-3", 
-        ua: ") AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15"
+        val: "Safari v16.4, Generic Like MacOS", 
+        id: "BROWSER---safari16-4", 
+        ua: ") AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15"
+    },
+    {
+        val: "Firefox 113.0", 
+        id: "BROWSER---ff113-0", 
+        ua: "; rv:109.0) Gecko/20100101 Firefox/113.0"
     },
     {
         val: "Firefox 112.0", 
         id: "BROWSER---ff112-0", 
-        ua: "; rv:109.0) ecko/20100101 Firefox/112.0"
-    },
-    {
-        val: "Firefox 111.0", 
-        id: "BROWSER---ff111-0", 
-        ua: "; rv:109.0) Gecko/20100101 Firefox/111.0"
+        ua: "; rv:109.0) Gecko/20100101 Firefox/112.0"
     },
     {
         val: "Firefox 52.0", 
@@ -107,15 +112,20 @@ const OS_OPTIONS = [
         id:"OS---android8-0-0---SMA750FN", 
         ua: "Linux; Android 8.0.0; SM-A750FN"
     },
+	{
+        val: "Generic/Android 13", 
+        id: "OS---andrdoid13---generic", 
+        ua: "Linux; Android 13"
+	},
     {
         val: "Generic/Android 10", 
         id: "OS---andrdoid10---generic", 
         ua: "Linux; Android 10; K"
     },
     {
-        val: "Samsung Galaxy S9/Android 10", 
+        val: "Samsung Galaxy S9/Android 13", 
         id: "OS---android10---smg960u", 
-        ua: "Linux; Android 10; SM-G960U"
+        ua: "Linux; Android 13; SM-G960U"
     },
     {
         val: "Pixel 6 Pro/Android 12", 
@@ -123,14 +133,34 @@ const OS_OPTIONS = [
         ua: "Linux; Android 12; Pixel 6 Pro"
     },
     {
-        val: "iPhone/iOS 15.2", 
-        id: "OS---ios15-2---iphone", 
-        ua: "iPhone; CPU OS 15_2 like Mac OS X"
+        val: "iPhone/iOS 16.5", 
+        id: "OS---ios16-5---iphone", 
+        ua: "iPhone; CPU OS 16_5 like Mac OS X"
     }, 
     {
-        val: "iPad/iOS 15.2", 
-        id: "OS---ios15-2---ipad", 
-        ua: "iPad; CPU OS 15_2 like Mac OS X"
+        val: "iPad/iOS 16.5", 
+        id: "OS---ios16-5---ipad", 
+        ua: "iPad; CPU OS 16_5 like Mac OS X"
+    },
+    {
+        val: "iPhone/iOS 16.4", 
+        id: "OS---ios16-4---iphone", 
+        ua: "iPhone; CPU OS 16_4 like Mac OS X"
+    }, 
+    {
+        val: "iPad/iOS 16.4", 
+        id: "OS---ios16-4---ipad", 
+        ua: "iPad; CPU OS 16_4 like Mac OS X"
+    },
+    {
+        val: "iPhone/iOS 16.3", 
+        id: "OS---ios16-3---iphone", 
+        ua: "iPhone; CPU OS 16_3 like Mac OS X"
+    }, 
+    {
+        val: "iPad/iOS 16.3", 
+        id: "OS---ios16-3---ipad", 
+        ua: "iPad; CPU OS 16_3 like Mac OS X"
     },
     {
         val: "Xbox One", 
